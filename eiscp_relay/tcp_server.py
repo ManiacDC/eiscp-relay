@@ -104,7 +104,8 @@ class EiscpRequestHandler(socketserver.BaseRequestHandler):
                 header += data
                 break
             if not data:
-                raise ConnectionClosedException()
+                self.server.logger.debug("request did not begin with 'I'")
+                return
 
         header += tcp_grab_bytes(sock, 15)
 
@@ -150,4 +151,6 @@ def tcp_grab_bytes(sock: socket.socket, num_bytes: int):
         else:
             # timeout hit, did not receive expected bytes
             return None
+    if not data:
+        raise ConnectionClosedException()
     return data
