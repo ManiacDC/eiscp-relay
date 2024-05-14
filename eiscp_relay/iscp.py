@@ -230,15 +230,12 @@ class IscpSerialListener(IscpListener):
 
     def check_for_message(self):
         """returns true if a message is ready"""
-        in_waiting = self.ser.in_waiting
-        if in_waiting > 0:
-            return True
-        else:
-            # implement timeout since in_waiting doesn't have one
-            time.sleep(0.1)
+        # simulate 0.1s timeout since in_waiting doesn't have one
+        for _ in range(10):
             in_waiting = self.ser.in_waiting
             if in_waiting > 0:
                 return True
+            time.sleep(0.01)
         return False
 
     def _get_one_byte(self):
