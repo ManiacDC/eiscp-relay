@@ -26,6 +26,14 @@ If in Serial mode, the system name of the serial port. On Windows, this will be 
 
 If in TCP mode, this should be the IP address and port of the Serial server.
 
+# installing dependencies
+
+To install dependencies needed to run the script:
+`pip install -r requirements.txt`
+
+If you also want to install tools for development:
+`pip install -r requirements.txt -r requirements-dev.txt`
+
 # Running the script
 
 This is designed to be run as a module, so from the root of the repository, you should run:
@@ -37,6 +45,15 @@ This is designed to be run as a module, so from the root of the repository, you 
 
 I used this guide to set up the server on Linux (skip to section `Running a Linux daemon`):
 https://oxylabs.io/blog/python-script-service-guide
+
+Basically:
+
+ * Create a file named `eiscp_relay.service` in `/etc/systemd/system`
+ * Update the file as below
+ * Run `systemctl daemon-reload`
+ * Run `systemctl start eiscp_relay`
+ * Check that it's running: `systemctl status eiscp_relay`
+
 
 I used miniconda to install python, and created a python 3.12 environment. My `eiscp_relay.service` file looks something like this:
 
@@ -58,4 +75,4 @@ WantedBy=multi-user.target
 
 ## Windows
 
-I would recommend setting up the service using [nssm](https://nssm.cc)
+I would recommend setting up the service using [nssm](https://nssm.cc). I would recommend setting up a miniconda environment with python 3.12 and using that to run the script.
