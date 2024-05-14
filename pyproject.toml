@@ -1,0 +1,30 @@
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+[tool.coverage.run]
+branch = true
+omit = ["**/setup.py"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
+fail_under = 100
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.pylint.main]
+# A comma-separated list of package or module names from where C extensions may
+# be loaded. Extensions are loading into the active Python interpreter and may
+# run arbitrary code.
+extension-pkg-allow-list = ["pydantic"]
+
+# List of plugins (as comma separated values of python module names) to load,
+# usually to register additional checkers.
+load-plugins = ["pylint_pydantic"]
+
+[tool.pylint.format]
+# Maximum number of characters on a single line.
+max-line-length = 120

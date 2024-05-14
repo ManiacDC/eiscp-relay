@@ -1,0 +1,8 @@
+isort
+pylint
+pylint-pydantic
+pytest~=7.0
+pytest-cov~=4.0
+syrupy~=4.6
+black~=23.0
+mock

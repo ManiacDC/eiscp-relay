@@ -1,0 +1,18 @@
+{
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.testing.pytestArgs": [
+        "tests",
+        "-s",
+        "--disable-warnings"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "autoDocstring.docstringFormat": "one-line-sphinx",
+    "pylint.importStrategy": "fromEnvironment"
+}
