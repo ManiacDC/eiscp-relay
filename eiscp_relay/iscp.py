@@ -76,9 +76,12 @@ class IscpListener:
             if len(self.client_sockets) > 0:
                 eiscp_message = build_eiscp_packet(message)
                 for sock in self.client_sockets:
-                    sock.sendall(eiscp_message)
+                    try:
+                        sock.sendall(eiscp_message)
+                    except Exception:  # pylint: disable = broad-exception-caught
+                        self.logger.exception("Unable to send message to socket: %s", sock.getpeername())
         except Exception:  # pylint: disable = broad-exception-caught
-            self.logger.exception("Unable to send message to socket: %s", sock.getpeername())
+            self.logger.exception("Unable to send messages to clients!")
 
     def check_for_message(self):
         """checks for messages"""
