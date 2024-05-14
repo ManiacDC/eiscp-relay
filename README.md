@@ -26,7 +26,7 @@ If in Serial mode, the system name of the serial port. On Windows, this will be 
 
 If in TCP mode, this should be the IP address and port of the Serial server.
 
-# installing dependencies
+# Installing dependencies
 
 To install dependencies needed to run the script:
 `pip install -r requirements.txt`
