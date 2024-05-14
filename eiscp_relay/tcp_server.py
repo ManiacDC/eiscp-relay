@@ -41,6 +41,7 @@ class PerClientThreadingMixin:
         """
         self.sockets.append(request)
         self.logger.info("client connected: %s", client_address)
+        counter = 0
         while True:
             ready = select.select([request], [], [], 0.2)[0]
             if ready:
@@ -53,6 +54,17 @@ class PerClientThreadingMixin:
                     self.logger.debug("exception caught")
                     self.handle_error(request, client_address)
                     break
+            else:
+                counter+=1
+                if counter == 5:
+                    counter = 0
+                    # check for broken pipe
+                    try:
+                        request.getpeername()
+                    except IOError:
+                        self.logger.debug("connection closed")
+                        break
+
         self.logger.debug("shutting down request")
         self.sockets.remove(request)
         self.shutdown_request(request)
