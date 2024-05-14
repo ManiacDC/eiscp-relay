@@ -2,6 +2,8 @@
 
 This script relays eISCP commands to serial-based (ISCP) Onkyo receivers. It will relay responses from the receiver back to the client.
 
+This idea was heavily inspired by cl0rm's eiscp bridge https://github.com/cl0rm/eiscp_bridge, but I wanted a solution that did not require custom hardware.
+
 # Supported Connection Methods
 
 The script supports connecting to the receiver via a serial port or a TCP-based serial server. I use a [NB114](https://www.cdebyte.com/products/NB114) serial server, it cost about $15-20 on Aliexpress (note, if using this device, you must use a null modem cable to connect to the receiver).
