@@ -53,7 +53,7 @@ Basically:
  * Create a file named `eiscp_relay.service` in `/etc/systemd/system`
  * Update the file as below
  * Run `systemctl daemon-reload`
- * Run `systemctl start eiscp_relay`
+ * Run `systemctl enable --now eiscp_relay`
  * Check that it's running: `systemctl status eiscp_relay`
 
 
