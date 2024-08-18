@@ -9,7 +9,7 @@ HEADER_SIZE = (16).to_bytes(4, "big")
 def build_eiscp_packet(command: bytes):
     """builds an eiscp packet for the given command"""
     return struct.pack(
-        f">4sIIcxxx{len(command)}sccc", b"ISCP", 16, len(command) + 3, b"1", command, b"\x1A", b"\r", b"\n"
+        f">4sIIcxxx{len(command)}sccc", b"ISCP", 16, len(command) + 3, b"\x01", command, b"\x1A", b"\r", b"\n"
     )
 
 
